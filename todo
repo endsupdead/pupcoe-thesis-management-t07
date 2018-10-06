@@ -1,0 +1,117 @@
+------------------------------
+missing columns/tables
+
+
+Approval Table
+  id
+  thesis_id  (integer FK)
+  approved_by (integer FK )
+  date_created date/time
+  created_by  (integer FK)
+  updated_by (integer FK)
+
+class
+  id
+  section
+  adviser_id
+  updated_by
+  created_by
+  date_created
+  acad_year
+
+usertype table
+
+class members
+  id
+  class_id integer FK
+  student_id integer FK
+
+thesis table 
+  current_stage (MOR/DP1/DP2)
+
+committee members
+  id
+  committee_id
+  faculty_id
+------------------------------------
+
+search page for defense 
+  disabled if done already
+  choose role (head panel/ panel only) 
+
+------------------------------------
+registration
+  first name
+  last name
+  email
+  contact_no
+  role -faculty, students, guest,admin(dropdown)
+------------------------------------
+defense page (panel/faculty)
+  thesis title
+  abstract 
+  final grade (head panel)
+  comment box
+------------------------------------
+thesis advisory
+  list of all approved thesis
+  search bar for all related thesis
+
+  status review!!
+
+After submit thesis
+  --review
+  -- if reviewed (reviewed)
+
+ !!! for_review
+  reviewed
+  approved
+  disapproved
+
+if count
+
+atleast (2 checkbox in group list) 
+
+save sa session yun user data based sa role
+update group_id kapag nag insert sa adviser sa groups
+committee /adviser review/not review! approval of thesis !!!
+display data !!! 
+di ko na alam basta madami pa !!!
+
+if count = 60% = approved 
+
+
+
+thesis_status table 
+  -new_proposal
+  -approved_by_adviser
+  -disapproved_by_adviser
+  -dissapproved_by_committee
+  -approved_by_committee
+  -for_title_defense
+  -passed
+  -failed
+
+
+  -major_revisions
+  -minor_revisions
+  -failed
+  -passed
+
+  dashboard
+
+create type enum MOR/DP1/DP2
+
+choose approved proposal for title defense 
+default type of defense = MOR 
+status id null (initial status)
+
+
+users table
+
+is_admin True or false 
+
+
+{{#if admin}} == true
+  show details
+{{/if}}

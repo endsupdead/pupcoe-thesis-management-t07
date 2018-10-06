@@ -1,0 +1,56 @@
+<head>
+  <title>CpERMS | Compendium</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header }}
+
+<!--compendium-->
+<div class="d-flex justify-content-center small">
+  <div class= "well well-width">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 col-sm-12">
+          <!--search-->
+          <div class="container">
+            <!--search bar-->
+            <div class="row">
+              <div class="col-md-6">
+                <h4>PUP CpE Thesis Compendium</h4>
+                <hr class="botm-line">
+              </div>
+              <div class="col-md-6">
+                <br>
+                <input class="form-control fa" id="thesis_search" type="text" placeholder="&#xf002;   Search here..">
+                <hr>
+              </div>
+            </div>
+            <!--thesis list-->
+            Batch 2010<br><br>
+            <table class="table table-striped" style="table-layout: fixed">
+              <thead>
+                <tr class="info">
+                  <th style="width: 40">Title</th>
+                  <th style="width: 30">Author</th>
+                  <th style="width: 30">Adviser</th>
+                </tr>
+              </thead>
+              <tbody id="thesis_list">
+                <tr>
+                  <td>Access Control to Home Devices using Mobile Technology</td>
+                  <td>Ryan Richard P. Aguila, Lorenz F. Amor, Joel J. Buenaventura, Bryan B. dela Paz</td>
+                  <td>Engr. Julius S. Cansino, Engr. Ronald D. Fernando</td>
+                </tr>
+              </tbody>
+            </table>
+          <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!--compendium-->
+
+{{> footer }}
+
+<script type="text/javascript" src="../js/search.js"></script><!--SEARCH-->

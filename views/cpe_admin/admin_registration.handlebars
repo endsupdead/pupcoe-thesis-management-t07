@@ -1,0 +1,156 @@
+<head>
+  <title>CpERMS | Registration</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_admin }}
+
+<!--admin registration-->
+<div class="d-flex justify-content-center small">
+  <div>
+    <div class="navbar navbar-static">
+      <div class="navbar-collapse collapse">
+        <!--inside nav-->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#user_reg" role="tab" aria-selected="true">User Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#class_reg" role="tab" aria-selected="true">Class Registration</a>
+          </li>
+        </ul><!--inside nav-->
+      </div>
+    </div>
+    <br>
+    <div class="tab-content well">
+      <!--user_reg-->
+      <div id="user_reg" class="tab-pane fade in active">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>User Registration</h4>
+              <hr class="botm-line">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col-md-9 col-sm-9">
+                    <form method="POST" action="/admin/registration/user">
+                      <!--usertype class batch-->
+                      <div class="row form-group">
+                        <div class="col-sm-6">
+                          <label class="sr-only" for="user_class">Usertype</label>
+                          <select style="height: 2.5em" class="form-control gray" name="usertype" id="user_type" required>
+                            <option hidden>Usertype</option>
+                            <option value ="student" >Student</option>
+                            <option value ="faculty">Faculty</option>
+                            <option value ="guest">Guest Panel</option>
+                            <option value ="admin">Admin</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label class="sr-only" for="user_class">Class</label>
+                          <select style="height: 2.5em" class="form-control gray" name="class" id="user_class" required>
+                            <option hidden>Class</option>
+                            {{#each class}}
+                            <option value ="{{this.id}}">{{this.section}} </option>
+                            {{/each}}  
+                          </select>
+                        </div>
+                      </div><!--usertype class batch-->
+                      <div class="form-group">
+                         <label class="sr-only" for="first_name">First Name</label>
+                         <input type="name" name="fname" class="form-control" id="first_name" placeholder="First Name" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="last_name">Middle Name</label>
+                         <input type="name" name="mname" class="form-control" id="last_name" placeholder="Middle Name" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="last_name">Last Name</label>
+                         <input type="name" name="lname" class="form-control" id="last_name" placeholder="Last Name" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="contact_number">Contact Number</label>
+                         <input type="number" name="contacts" class="form-control" id="contact_number" placeholder="Contact Number" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="email_address">Email Address</label>
+                         <input type="email" name="email" class="form-control" id="email_address" placeholder="Email Address" required>
+                      </div>
+                      <div class="form-group input-group">
+                         <label class="sr-only" for="user_password">Password</label>
+                         <input type="password" name="password" class="form-control" id="user_password" placeholder="Password" required>
+                         <div class="input-group-addon">
+                            <span toggle="#user_password" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+                         </div>
+                      </div>
+                      <div class="form-group">
+                         <button type="submit" class="btn btn-success pull-right" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."><i class="fa fa-paper-plane"></i> Register</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--user_reg-->
+      <!--class_reg-->
+      <div id="class_reg" class="tab-pane fade">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>Class Registration</h4>
+              <hr class="botm-line">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col-md-9 col-sm-9">
+                    <form method="POST" action="/admin/registration/class">
+                      <div class="row form-group">
+                        <div class="col-sm-6">
+                          <input type="number" name="class_no" class="form-control" id="class_no" placeholder="Class Number" required>
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="text" name="acad_year" class="form-control" id="acad_year" placeholder="Academic Year" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <select style="height: 2.5em" class="form-control gray" name="adviser" id="user_type" required>
+                          <option value="" hidden>Adviser</option>
+                          {{#each faculty}}
+                          <option value ="{{this.id}}">{{this.first_name}}  {{this.last_name}}</option>
+
+                          {{/each}}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                         <button type="submit" class="btn btn-success pull-right" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."><i class="fa fa-paper-plane"></i> Register</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--class_reg-->
+    </div><!--tab content-->
+  </div><!--well-->
+</div><!--row-->
+<!--admin registration-->
+
+{{> footer }}
+
+<script type="text/javascript" src="../../js/seepassword.js"></script>
+
+<script type="text/javascript">
+$(function() {
+  $("#user_type").change(function() {
+      if ($(this).val() == "student") {
+          $("#user_class").prop("disabled", false);
+      }
+      else
+          $("#user_class").prop("disabled", true);
+  });
+});
+</script>;

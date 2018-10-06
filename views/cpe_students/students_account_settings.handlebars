@@ -1,0 +1,88 @@
+<head>
+  <title>CpERMS | Account Settings</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_students }}
+
+<!--students account settings-->
+<div class="d-flex justify-content-center">
+  <div class= "well well-width">
+    <div class="container small">
+      <div class="row">
+        <main class="col-md-12 col-sm-12">
+          <h4>Account Settings</h4>
+          <hr class="botm-line">
+          <div class="modal-body mx-auto" style="width: 80%">
+            <form method="post" action="/students/settings">
+              <div class="form-group">
+                Contact Number
+                <div class="form-group">
+                   <input type="text" name="contacts" class="form-control" value="Contacts from Database" placeholder="Your contact no. here" required>
+                </div>
+                Email Address
+                <div class="form-group">
+                   <input type="text" name="email" class="form-control" value="Email from Database" placeholder="Your email address here" required>
+                </div>
+                Username
+                <div class="form-group">
+                   <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here" required>
+                </div>
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#change_password">Change Password?</button>
+                </div>
+                <div class="pull-right">
+                  <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;&nbsp;Update </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div><!--admin account settings-->
+
+<!--MODAL-FORM change_password-->
+<div class="modal fade small" id="change_password" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong> Change Password</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group input-group">
+             <input type="password" name="password_old" class="form-control" id="user_password_old" placeholder="Old Password" required>
+             <div class="input-group-addon">
+                <span toggle="#user_password_old" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+             </div>
+          </div>
+          <div class="form-group input-group">
+            <input type="password" name="password1" class="form-control" id="user_password1" placeholder="New Password" required>
+            <div class="input-group-addon">
+              <span toggle="#user_password1" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+            </div>
+          </div>
+          <div class="form-group input-group">
+            <input type="password" name="password2" class="form-control" id="user_password2" placeholder="Confirm New Password" required>
+            <div class="input-group-addon">
+              <span toggle="#user_password2" class="fa fa-fw fa-eye see-pw toggle-password"></span>
+            </div>
+          </div>
+          <div class="form-group">
+             <button type="submit" class="btn btn-primary pull-right btn-sm" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."><i class="fa fa-check"></i> Change</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}
+
+<script type="text/javascript" src="../../js/seepassword.js"></script>

@@ -1,0 +1,93 @@
+<head>
+  <title>CpERMS | Guest Panel</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_admin }}
+
+<!--admin guest panel-->
+<div class="d-flex justify-content-center small">
+  <div class= "well well-width">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 col-sm-12">
+          <h4>Guest Panel</h4>
+          <hr class="botm-line">
+          <form method="post" action="/students/settings">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr class="info center">
+                  <th  style="width: 15%">Number</th>
+                  <th>Name</th>
+                  <th  style="width: 20%">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="center">
+                  <td>1</td>
+                  <td></td>
+                  <td>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#update"><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                  </td>
+                  </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div><!--section_1-->
+    </div><!--tab content-->
+  </div><!--well-->
+</div><!--row-->
+<!--admin guest panel-->
+
+<!--MODAL-FORM update-->
+<div class="modal fade small" id="update" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong> Guest Panel Name</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            First Name
+            <div class="form-group">
+               <input type="text" name="fname" class="form-control" value="First Name from Database" placeholder="First name here">
+            </div>
+            Middle Name
+            <div class="form-group">
+               <input type="text" name="mname" class="form-control" value="Middle Name from Database" placeholder="Middle name here">
+            </div>
+            Last Name
+            <div class="form-group">
+               <input type="text" name="lname" class="form-control" value="Last Name from Database" placeholder="Last name here">
+            </div>
+            Contact Number
+            <div class="form-group">
+               <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here">
+            </div>
+            Email Address
+            <div class="form-group">
+               <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here">
+            </div>
+            Username
+            <div class="form-group">
+               <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here">
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."> Update</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}

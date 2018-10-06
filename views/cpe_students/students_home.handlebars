@@ -1,0 +1,78 @@
+<head>
+  <title>CpERMS | Home</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_students }}
+
+<!--students home-->
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-12 col-sm-12">
+      <h4>Home</h4>
+      <hr class="botm-line">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row col-md-12">
+    <div class="well col-md-5 col-sm-5 col-xs-5" style="margin: 1%">
+      <div class="form-group">
+        <blockquote class="text-center">
+          <i class="fa fa-user-circle fa-4x"></i>
+          <h3><strong>Member Name</strong></h3>
+          <h4><i class="fa fa-phone"></i> Phone</h4>
+          <h4><i class="fa fa-envelope"></i> Email</h4>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div><!--students home-->
+
+<!--NO RESULT DISPLAY-->
+<h1 class="text-center"><i class="fa fa-search fa-fw"></i>No Result!</h1>
+
+<!--PAGE NOT AVAILABLE DISPLAY-->
+<h1 class="text-center"><i class="fa fa-warning fa-fw"></i>Page not Available</h1>
+
+<!--SUCCESS and ERROR NOTIF-->
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <button class="btn btn-success" onclick="alert_success()">SUCCESS</button>
+    <button class="btn btn-danger" onclick="alert_error()">ERROR</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="alert alert-success alert_success" id="success">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong>
+    </div>
+  </div>
+</div><!--success-->
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="alert alert-danger alert_error" id="danger">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong>
+    </div>
+  </div><!--error-->
+</div>
+
+{{> footer }}
+
+<script type="text/javascript">
+function alert_success(){
+  $(".alert_success").show().delay(1500);
+  setTimeout(function(){
+    $(".alert_success").fadeOut().delay(1000); 
+  }, 1500);
+}
+
+function alert_error(){
+  $(".alert_error").show().delay(1500);
+  setTimeout(function(){
+    $(".alert_error").fadeOut().delay(1000); 
+  }, 1500);
+}
+</script><!--SUCCESS and ERROR NOTIF-->

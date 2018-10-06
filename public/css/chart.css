@@ -1,0 +1,11 @@
+.google-visualization-tooltip
+{
+  border-radius: 5px !important;
+  pointer-events: none !important;
+  width: 40% !important;
+  background: black !important;
+  opacity: 0.8 !important;
+}
+.google-visualization-tooltip-item {padding: 8px 10px !important;  margin: 0px !important;}
+.google-visualization-tooltip-item-list {padding: 0px !important;  margin: 0px !important;}
+.google-visualization-tooltip > ul > li > span {color: white !important; font-size: 15px !important;}

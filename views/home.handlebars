@@ -1,0 +1,126 @@
+<head>
+    <title>CpERMS | Home</title>
+</head>
+
+<!--body-->
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--home-->
+  <section id="home" class="home home-text">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><h4 style="margin-top: 0; color: black">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</h4></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav" style="margin-top: 2.5%">
+                {{#if admin}}
+                <li class="nav-item active"><a style="color:black" href="#home">Home</a></li> {{/if}}
+                <li class="nav-item"><a style="color:black" href="#history">History</a></li>
+                <li class="nav-item"><a style="color:black" href="#about">About</a></li>
+                <li class="nav-item"><a style="color:black" href="#compendium">Compendium</a></li>
+                <ul class="nav-item nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a style="color:black" href="#" class="dropdown-toggle" data-toggle="dropdown">Login </a>
+                    <ul id="login-dp" class="dropdown-menu">
+                      <li>
+                         <div class="row">
+                            <div class="col-md-12">
+                              <form method="POST" action="/login">
+                                  <div class="form-group">
+                                     <input type="text" name="email" class="form-control icon-placeholder" id="user_email" placeholder="&#xf0e0;  Email" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="password" name="password" class="form-control icon-placeholder" id="user_password" placeholder="&#xf023;  Password" required>
+                                    <div class="help-block text-right"><a href="/forgot_password">Forgot password?</a></div>
+                                  </div>
+                                  <div class="form-group">
+                                     <button type="submit" class="btn btn-success btn-block" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait...">Login</button>
+                                  </div>
+                                  <div class="checkbox">
+                                     <label>
+                                      <input type="checkbox"> keep me logged-in
+                                     </label>
+                                  </div>
+                               </form>
+                            </div>
+                         </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="col-md-12">
+          <div class="home-info">
+            <div class="home-logo text-center">
+              <img src="images/cpe_logo.png" alt="cpe_logo" class="img-responsive">
+            </div>
+            <div class="text-center">
+              <h1>Computer Engineering</h1>
+              <h1>Research Management System</h1><br><br><br>
+              <h1><a href="#history"><i style="color: black" class="fa fa-angle-down"></i></a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!--home-->
+
+  <!--history-->
+  <section id="history" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Bachelor of Science in Computer Engineering (BSCOE)</h2>
+          <h3>History</h3>
+          <hr class="botm-line">
+          <p class="desc">In 1978, the Philippine College of Commerce was transformed into PolytechnicUniversity of the Philippines by virtue of Presidential Decree 1341. This led to the abolition of the Center for Skills and Rural Industries Development (CSRID) and the creation of the Faculty of Technology with Professor Banaag A. Villaflor as Officer-in-charge. The three ladderized engineering programs that were initially offered for school year 1979-1980 were the Bachelor in Computer Technology (BCET), Bachelor on Electrical Engineering (BEE) and Bachelor in Electronics Engineering (BEL).</p>
+          <p class="desc">The Bachelor in Computer Technology was initially offered as a three-year diploma course and was later approved as a five (5) year course known as the Bachelor in Computer Engineering. The department started with one section and with 55 students enrolled in the first year during the first semester of the school year 1979-1980. The first batch produces thirteen (13) graduates that successfully earned the degree of Bachelor in Computer Engineering on April 6, 1984.</p>
+          <p class="desc">In 1980, the Faculty of Technology was changed to the level of Institute of Technology under the leadership of Dr. Romulo M. Ricafranca as Director. With the impressive academic performance and increasing number of enrollees, the Institute was converted into a College of Engineering in 1984 with Engr. German A. Padua as Director.</p>
+          <p class="desc">Under the presidency of Dr. Nemesio E. Prudente in 1986, the BCET curriculum was revised into Bachelor of Science in Computer Engineering (BSCoE). This is to align with the standards and requirement s set by the Ministry of Education Culture and Sports (MECS) and the Technical Panel for Engineering Education (TPEE). The department grew and increases in to three (3) sections and at present with five (5) sections per year level.</p>
+          <p class="desc">With the college objectives to become globally competitive and to have state-of-the-art technology, a Memorandum of Agreement was singed on December 5, 1989 by Dr. Nemesio E. Prudente, representing PUP, and Dr. Masamuzi Kumagai, representing the government of Japan, in the presences of Japan Cooperating Agency (JICA) officials.</p>
+          <p class="desc">It was under the leadership of Engr. Alberto C. Cañete when JICA turned-over several state-of-the-art laboratory equipment and facilities to the College on November 1991. Six (6) Personal Computer Laboratory Rooms were created to house the ninety sis (96) microcomputers, one (1) Computer Laboratory, one (1) Microcomputer Control Laboratory and one (1) Microprocessor Laboratory specifically designed to fully utilized The (JICA) equipment such as Z-80 microprocessor trainers and robot arm. Japanese expert and engineers were sent to PUP to provide instruction and assistance. Moreover, faculty members were sent to Japan for training and how to use and maintain this equipment. Engr. Remedios G. Ado and Engr. Ronald D. Fernando attended the JICA training program on "Fabrication and Application of Interface Circuit for the Microprocessor" in Sendai College on October to December 1993 and 1994 respectively.</p>
+          <p class="desc">Engr. Eleanor M. Pineda, as the first Laboratory Head of the department was appointed on August 1, 1993. Engr. Ronald D. Fernando took over the place of Engr. Pineda on March 21 1994. The need for maintenance team was taken into consideration by the administration and appointed Engr. Fernando as head in the University Information Technology Laboratory Maintenance.</p>
+          <p class="desc">In November 1997, the Bachelor of Science in Computer Engineering with the other engineering program attained the Level I status by the AACCUP. Engr. Estelita B. Del Rosario, accreditation coordinator, retired the following year after more than 30 years in government service.</p>
+          <p class="desc">Change of leadership took place in the college when the term of Dean Dante V. Gedaria expired last November 3, 1998. Engr. Vicky S. Cruz assumed the Deanship position while Engr. Ben B. Andres became the Accreditation Coordinator.</p>
+          <p class="desc">In June 2000, the separation of the Department of Architecture from the College of Engineering and Architecture took place, and the addition of the Department of Fine Arts gave birth to the College of Architecture and Fine Arts.</p>
+        </div>
+      </div>
+    </div>
+  </section><!--history-->
+
+  <!--about-->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>About</h3>
+          <hr class="botm-line">
+          <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi est ex, dictum in laoreet non, vehicula vehicula mi. Vivamus aliquet semper lacus in scelerisque. Morbi ac leo elit. Mauris lacinia ligula a ipsum congue commodo. Curabitur eleifend elit risus, at egestas lacus euismod feugiat. Ut vitae quam ligula. Suspendisse sit amet erat libero. Suspendisse elementum nec ante et cursus. Suspendisse ut bibendum magna. Vestibulum finibus posuere maximus. Curabitur faucibus viverra convallis. Nunc eu eros suscipit lacus posuere suscipit ut vitae erat. </p>
+        </div>
+      </div>
+    </div>
+  </section><!--about-->
+
+  <!--compendium-->
+  <section id="compendium" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Compendium</h3>
+          <hr class="botm-line">
+          <p class="desc">Curabitur a condimentum urna, sed facilisis nulla. Sed eget odio consequat, commodo augue quis, semper nibh. Etiam odio neque, feugiat non tristique id, condimentum ut nibh. Aliquam eu mollis justo, tristique dictum quam. Ut a aliquam lacus. Donec vehicula tellus egestas arcu tristique feugiat. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In molestie posuere arcu ac hendrerit. Phasellus sit amet mauris aliquet, porttitor odio eget, dapibus neque. Morbi aliquam ante a posuere vulputate. Phasellus vel diam a leo aliquam volutpat. Donec pulvinar erat rhoncus eros sagittis pharetra. </p>
+          <div class="text-right blink"><a href="/compendium" target="_blank">>> SEE COMPENDIUM <<</a></div>
+        </div>
+      </div>
+    </div>
+  </section><!--compendium-->
+
+{{> footer }}
+</body><!--body-->

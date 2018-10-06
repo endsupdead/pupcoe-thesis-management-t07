@@ -1,0 +1,202 @@
+<head>
+  <title>CpERMS | Faculty</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_admin }}
+
+<!--admin faculty-->
+<div class="d-flex justify-content-center small">
+  <div>
+    <div class="navbar navbar-static">
+      <div class="navbar-collapse collapse">
+        <!--inside nav-->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#manage_faculty" role="tab" aria-selected="true">Faculty</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#manage_adviser" role="tab" aria-selected="true">Advisers</a>
+          </li>
+        </ul><!--inside nav-->
+      </div>
+    </div>
+    <br>
+    <div class="tab-content well">
+      <!--manage_faculty-->
+      <div id="manage_faculty" class="tab-pane fade in active">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>Faculty</h4>
+              <hr class="botm-line">
+              <form method="post" action="/students/settings">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr class="info center">
+                      <th  style="width: 15%">Number</th>
+                      <th>Name</th>
+                      <th  style="width: 20%">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="center">
+                      <td>1</td>
+                      <td></td>
+                      <td>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#view_faculty"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                      </td>
+                      </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!--manage_faculty-->
+      <!--manage_adviser-->
+      <div id="manage_adviser" class="tab-pane fades">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12">
+              <h4>Adviser</h4>
+              <hr class="botm-line">
+              <form method="post" action="/students/settings">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr class="info center">
+                      <th  style="width: 15%">Number</th>
+                      <th>Name</th>
+                      <th  style="width: 20%">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="center">
+                      <td>1</td>
+                      <td></td>
+                      <td>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#update_adviser"><i class="fa fa-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                      </td>
+                      </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!--manage_adviser-->
+    </div><!--tab content-->
+  </div><!--well-->
+</div><!--row-->
+<!--admin faculty-->
+
+<!--MODAL-FORM view faculty-->
+<div class="modal fade small" id="view_faculty" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong> Faculty Name</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            First Name
+            <div class="form-group">
+               <input type="text" name="fname" class="form-control" value="First Name from Database" placeholder="First name here">
+            </div>
+            Middle Name
+            <div class="form-group">
+               <input type="text" name="mname" class="form-control" value="Middle Name from Database" placeholder="Middle name here">
+            </div>
+            Last Name
+            <div class="form-group">
+               <input type="text" name="lname" class="form-control" value="Last Name from Database" placeholder="Last name here">
+            </div>
+            Contact Number
+            <div class="form-group">
+               <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here">
+            </div>
+            Email Address
+            <div class="form-group">
+               <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here">
+            </div>
+            Username
+            <div class="form-group">
+               <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here">
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."> Update</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL-FORM update adviser-->
+<div class="modal fade small" id="update_adviser" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong> Adviser Name</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/students/settings">
+          <div class="form-group">
+            Class
+            <div class="form-group">
+               <select style="height: 2.5em" class="form-control" name="class" value="" required>
+                  <option value ="1">1</option>
+                  <option value ="2">2</option>
+                  <option value ="3">3</option>
+                  <option value ="4">4</option>
+                  <option value ="5">5</option>
+               </select>
+            </div>
+            First Name
+            <div class="form-group">
+               <input type="text" name="fname" class="form-control" value="First Name from Database" placeholder="First name here">
+            </div>
+            Middle Name
+            <div class="form-group">
+               <input type="text" name="mname" class="form-control" value="Middle Name from Database" placeholder="Middle name here">
+            </div>
+            Last Name
+            <div class="form-group">
+               <input type="text" name="lname" class="form-control" value="Last Name from Database" placeholder="Last name here">
+            </div>
+            Contact Number
+            <div class="form-group">
+               <input type="text" name="contacts" class="form-control" value="Contact Number from Database" placeholder="Your contact number here">
+            </div>
+            Email Address
+            <div class="form-group">
+               <input type="text" name="email" class="form-control" value="Email Address from Database" placeholder="Your email address here">
+            </div>
+            Username
+            <div class="form-group">
+               <input type="text" name="username" class="form-control" value="Username from Database" placeholder="Your username here">
+            </div>
+            <div class="pull-right">
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait..."> Update</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}

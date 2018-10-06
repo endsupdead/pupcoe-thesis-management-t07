@@ -1,0 +1,39 @@
+<head>
+	<title>CpERMS | Admin Login</title>
+	<!-- LOCAL -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header }}
+
+<!--welcome admin-->
+<div class="container">
+	<div class="row justify-content-center align-items-center">
+    <div class="col-md-6 col-sm-6">
+      <div class="row box">
+        <div class="col-md-12">
+          <div class="text-center">
+          	<h1>WELCOME!</h1>
+            <hr class="redline">
+          </div>
+          <form method="POST" action="/admin/login">
+            <div class="form-group">
+               <label class="sr-only" for="email">Email</label>
+               <input type="text" name="email" class="form-control icon-placeholder" id="email" placeholder="&#xf0e0;   Email" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="admin_password">Password</label>
+              <input type="password" name="password" class="form-control icon-placeholder" id="admin_password" placeholder="&#xf023;   Password" required>
+              <div class="help-block text-right small"><a href="/forgot_password">Forgot password?</a></div>
+            </div>
+            <div class="form-group">
+               <button type="submit" class="btn btn-success btn-block" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please wait...">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!--welcome admin-->
+
+{{> footer }}

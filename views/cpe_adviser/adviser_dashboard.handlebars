@@ -1,0 +1,144 @@
+<head>
+  <title>CpERMS | Dashboard</title>
+  <!-- LOCAL -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+{{> header_faculty }}
+
+<!--faculty home-->
+<div class="d-flex justify-content-center">
+  <div class= "well well-width">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 col-sm-12">
+          <h4>Dashboard</h4>
+          <hr class="botm-line">
+        </div>
+        <main role="main">
+          <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column white-text">
+            <!--row 1-->
+            <div class="container">
+              <div class="row">
+                <!--pie chart-->
+                <div class="col-md-6">
+                  <h5>Title Proposal</h5>
+                  <div id="piechart_3d_title" width="100%"></div>
+                  <script>
+                  google.charts.load('current', {'packages':['corechart']});
+                  google.charts.setOnLoadCallback(drawChart);
+                    
+                  // Draw the chart and set the chart values
+                  function drawChart() {
+                      var data = google.visualization.arrayToDataTable
+                      ([
+                      ['Type', 'Numbers'],
+                      ['Approved', 30],
+                      ['Approved with Revisions', 40],
+                      ['Disapproved', 10]
+                    ]);
+
+                    // Optional; add a title and set the width and height of the chart
+                    var options =
+                      {
+                        chartArea: {left:0, top:0, bottom:0, right:150},
+                        legend: {position: 'right', alignment: 'center', textStyle: {fontSize: 15}},
+                        tooltip: {isHtml: true},
+                        backgroundColor: 'transparent',
+                        is3D: true,
+                        slices: {
+                          0:{color: '#4da6ff'}, 
+                          1:{color: '#ffa64d'}, 
+                          2:{color: '#B565A7'}}
+                      };
+
+                    // Display the chart inside the <div> element with id="piechart"
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_title'));
+                    chart.draw(data, options);
+                  }
+                  </script>
+                </div><!--pie-->
+                <!--bar graphs-->
+                <div class="col-md-6">
+                  <h5>Groups per Section</h5><br>
+                  <canvas id="myChartStudents"></canvas>
+                  <script>
+                  var ctx = document.getElementById("myChartStudents").getContext('2d');
+                  var myChartStudents = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5'],
+                        datasets: [{
+                            label: 'Groups',
+                            data: [11, 13, 13, 11, 12],
+                            backgroundColor:
+                            [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)',
+                                'rgba(153, 102, 255, 0.5)'
+                            ],
+                            borderColor:
+                            [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options:
+                    {
+                      legend: {display: false},
+                      tooltips:
+                      {
+                        enabled: true,
+                        mode: 'single',
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        titleFontSize: 14,
+                        cornerRadius: 5, 
+                      },
+                      scales:
+                      {
+                        yAxes:
+                        [{
+                          scaleLabel:
+                          {
+                            display: true,
+                            labelString: 'Groups',
+                            fontSize: 15,
+                            padding: 12
+                          },
+                          ticks: {beginAtZero: true}
+                        }],
+                        xAxes:
+                        [{
+                          display: true,
+                          scaleLabel:
+                          {
+                            display: true,
+                            labelString: 'Section',
+                            fontSize: 15,
+                            padding: 5
+                          },
+                          ticks: {display: true}
+                        }]
+                      }
+                    },
+                  });
+                  Chart.defaults.global.defaultFontColor = 'gray';
+                  </script>
+                </div><!--bar graph-->
+              </div>
+            </div><!--row 1-->
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div><!--faculty home-->
+
+{{> footer }}
