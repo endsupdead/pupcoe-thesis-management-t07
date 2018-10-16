@@ -59,6 +59,14 @@ var actions = {
     .then(res => callback(res.rows[0]))
       .catch(e => callback(e))
     },
+    getGroupId: (id,callback) => {
+    const query =
+    ` select group_id from 
+      group_members where user_id = ${id} `;
+     db.query(query)
+    .then(res => callback(res.rows[0]))
+      .catch(e => callback(e))
+    },
     sectionList: (filter,callback) => {
     const query =
     `SELECT

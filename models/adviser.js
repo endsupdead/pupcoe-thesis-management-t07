@@ -80,5 +80,19 @@ var actions = {
       callback(e)
     })
   },
+    listThesis: (filter,callback) => {
+    const query =
+    `select thesis.id,thesis_title,group_id,current_stage,abstract,current_stage,groups.class_id, class.adviser_id from thesis
+      inner join groups on groups.id = group_id
+      inner join class on class.id = groups.class_id
+      where adviser_id = ${filter.adviserid} and current_stage = ${filter.currentstage}
+      `;
+     db.query(query)
+    .then(res => callback(res))
+    .catch(e => {
+      console.log(e)
+      callback(e)
+    })
+  }
 }
 module.exports = actions

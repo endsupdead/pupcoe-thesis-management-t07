@@ -3,13 +3,13 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
 const bodyParser = require('body-parser')
-const flash = require('express-flash');
-const cookieParser = require('cookie-parser');
-const { check, validationResult } = require('express-validator/check');
+const flash = require('express-flash-messages');
+const expressValidator = require('express-validator');
 
 const db = require('./db/db.js')
 const admin = require('./models/admin.js')
 const adviser = require('./models/adviser.js')
+const student = require('./models/student.js')
 
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
@@ -38,25 +38,14 @@ app.use(express.json());
 app.use(session({
   secret: 'cpethesismanagement',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
+  saveUninitialized: true
 }));
 
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(cookieParser('secret'));
 app.use(flash());
-
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
+app.use(expressValidator());
 
 passport.use(new Strategy({
   usernameField: 'email',
@@ -75,6 +64,7 @@ passport.use(new Strategy({
 
 passport.serializeUser(function(user, cb){
   cb(null, user.id);
+
 
 });
 
@@ -104,7 +94,7 @@ res.redirect('/login');
 function isFaculty(req, res, next) {
    if (req.isAuthenticated()) {
   admin.getById(req.user.id,function(user){
-    role = user.user_type;
+    role = 
     console.log('role:',role);
     if (role == 'faculty') {
         return next();
@@ -118,29 +108,14 @@ function isFaculty(req, res, next) {
 res.redirect('/login');
 }
 }
-function isAdviser(req, res, next) {
-   if (req.isAuthenticated()) {
-  admin.getById(req.user.id,function(user){
-    role = user.user_type;
-    console.log('role:',role);
-    if (role == 'admin') {
-        return next();
-    }
-    else{
-      res.send('cannot access!');
-    }
-  });
-  }
-  else{
-res.redirect('/login');
-}
-}
+
 
 function isStudent(req, res, next) {
    if (req.isAuthenticated()) {
-  admin.getById(req.user.id,function(user){
-    role = user.user_type;
-    console.log('role:',role);
+  admin.getGroupId(req.user.id,function(user){
+    req.session.group_id = user.group_id;
+    console.log(req.session.group_id)
+    role = req.user.user_type;
     if (role == 'student') {
         return next();
     }
@@ -204,19 +179,18 @@ app.get('/compendium', function(req, res) {
 
 //ADMIN---------------------------------------------
 app.get('/login', function(req, res) {
+  const flashMessages = res.locals.getMessages();
+  console.log('flash', flashMessages);
 	res.render('cpe_admin/admin_login',{
 		
 	});
 });
 
 app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: '/login',failureFlash: true}),
   function(req, res) {
-  admin.getById(req.user.id,function(user){
-    role = user.user_type;
-    req.session.user = user;
-      console.log(req.session.user);
-    console.log('role:',role);
+          console.log(req.user.user_type);
+    role = req.user.user_type;
     if (role == 'admin') {
 
         res.redirect('/admin/dashboard')
@@ -227,7 +201,6 @@ app.post('/login',
     else if (role == 'faculty'){
         res.redirect('/faculty/dashboard')
     }
- 		 });
   });
 
 app.get('/admin/dashboard',isAdmin, function(req, res) {
@@ -326,16 +299,14 @@ app.get('/admin/settings', function(req, res) {
 
 //FACULTY---------------------------------------------
 app.get('/faculty/dashboard', function(req, res) {
-  console.log(req.session.user.last_name)
 	res.render('cpe_faculty/faculty_dashboard',{
 		
 	});
 });
 
 app.get('/faculty/proposals', function(req, res) {
-	res.render('cpe_faculty/faculty_proposals',{
-		
-	});
+        res.render('cpe_faculty/faculty_proposals',{
+    });
 });
 
 app.get('/faculty/mor', function(req, res) {
@@ -377,9 +348,11 @@ app.get('/adviser/dashboard', function(req, res) {
 });
 
 app.get('/adviser/proposals', function(req, res) {
-  res.render('cpe_adviser/adviser_proposals',{
-
-  });
+  adviser.listThesis({adviserid:req.user.id,currentstage: 1},function(result){
+        res.render('cpe_adviser/adviser_proposals',{
+          proposal: result.rows
+    });
+  }); 
 });
 
 app.get('/adviser/mor', function(req, res) {
@@ -500,7 +473,22 @@ app.get('/students/home', isStudent, function(req, res) {
 app.get('/students/mor', function(req, res) {
 	res.render('cpe_students/students_mor',{
 		
-	});
+	});  
+});
+
+app.post('/students/mor/add', function (req, res) {
+ console.log('aa')
+    student.addProposal(
+      {
+        title: req.body.proposal_title,
+        abstract: req.body.proposal_abstract,
+        groupid: req.session.group_id
+      },
+      function(callback){  
+        console.log(callback)
+       res.redirect('/students/mor');
+       });
+
 });
 
 app.get('/students/dp1', function(req, res) {

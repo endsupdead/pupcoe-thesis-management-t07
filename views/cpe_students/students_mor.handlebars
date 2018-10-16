@@ -110,11 +110,11 @@
                   <div class="form-group">
                     Title:
                     <div class="form-group">
-                      <input type="text" name="username" placeholder="Your title here" class="form-control" value="Title from Database" required>
+                      <input type="text" name="proposal_title" placeholder="Your title here" class="form-control" value="Title from Database" required>
                     </div>
                     Abstract:
                     <div class="form-group">
-                      <textarea type="text" style="height: 250px" name="textarea_field" placeholder="Your abstract here" class="form-control">Abstract from Database</textarea>
+                      <textarea type="text" style="height: 250px" name="proposal_abstract" placeholder="Your abstract here" class="form-control">Abstract from Database</textarea>
                     </div>
                     <div class="pull-right footer">
                       <button type="button" class="btn btn-success btn-sm" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Please wait..."><i class="fa fa-check"></i> Update</button>
@@ -227,18 +227,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="/students/settings">
+        <form method="POST" action="/students/mor/add">
           <div class="form-group">
             Title:
             <div class="form-group">
-              <input type="text" name="username" class="form-control" placeholder="Your title here" required>
+              <input type="text" name="proposal_title" class="form-control" placeholder="Your title here" required>
             </div>
             Abstract:
             <div class="form-group">
-              <textarea style="height: 250px" type="text" name="username" class="form-control" placeholder="Your abstract here" required></textarea>
+              <textarea style="height: 250px" type="text" name="proposal_abstract" class="form-control" placeholder="Your abstract here" required></textarea>
             </div>
             <div class="pull-right footer">
-              <button type="submit" class="btn btn-success btn-sm" data-dismiss="modal" id="loading" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Please wait...">Add</button>
+              <button type="submit" class="btn btn-success btn-sm"  id="loading" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Please wait...">Add</button>
               <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
             </div>
           </div>
